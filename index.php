@@ -16,7 +16,21 @@ if ($conn->connect_error) {
 // SQL query to fetch data from a table
 $sql = "SELECT * FROM books.buecher";
 $result = $conn->query($sql);
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="src/styles.css">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <p>Bücher</p>
+</header>
+
+<?php
 if ($result->num_rows > 0) {
     // Output data of each row
     echo "<div class='container'>";
@@ -36,14 +50,5 @@ if ($result->num_rows > 0) {
 // Close connection
 $conn->close();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="src/styles.css">
-    <title>Title</title>
-</head>
-<body>
 </body>
 </html>

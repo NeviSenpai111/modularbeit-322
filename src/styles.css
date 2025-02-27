@@ -2,13 +2,97 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
 }
 
 .box {
-    border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
     width: 200px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+    background-color: rgba(231, 229, 229, 0.5);
+    border-radius: 10px;
+
+
+}
+
+header {
+    width: 95%;
+    margin: 20px auto;
+    background-color: rgba(117, 110, 110, 0.47);
+    color: white;
+    padding: 1em 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+
+}
+
+body {
+    background: #404040;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.container-input {
+    position: relative;
+}
+
+.input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+    align-content: center;
+
+
+}
+
+.container-input svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+}
+
+.input:focus {
+    opacity: 1;
+    width: 250px;
+}
+
+#sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-radius: 15px;
+    z-index: 1002;
+
+}
+#sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+#sidebar nav ul li {
+    padding: 8px 8px 8px 32px;
+    text-align: left;
+}
+#sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+#sidebar nav ul li a:hover {
+    background-color: #575757;
 }
