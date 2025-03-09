@@ -33,7 +33,6 @@ $end = min($totalPages, $start + $range - 1);
 $start = max(1, $end - $range + 1);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +44,6 @@ $start = max(1, $end - $range + 1);
 <header>
     <p>Bücher</p>
     <a class="login-box login-link" href="login.php">Login</a>
-
 </header>
 <div class="container">
     <div class="container-input">
@@ -60,17 +58,17 @@ $start = max(1, $end - $range + 1);
         </svg>
     </div>
 </div>
-<div class="container">
+<div class="container" id="book-list">
     <?php
     $result = $conn->query("SELECT * FROM books.buecher WHERE Title LIKE '%$searchTerm%' LIMIT $limit OFFSET $offset");
     if ($result->num_rows > 0) {
         // Output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "<div class='box'>";
-            echo "<p><strong>Katalog:</strong> " . $row["katalog"] . "</p>";
-            echo "<p><strong>Nummer:</strong> " . $row["nummer"] . "</p>";
-            echo "<p><strong>Title:</strong> " . $row["Title"] . "</p>";
-            echo "<p><strong>Beschreibung:</strong> " . $row["Beschreibung"] . "</p>";
+            echo "<div class='box' data-id='" . $row["id"] . "'>";
+            echo "<p><strong>Katalog:</strong> " . htmlspecialchars($row["katalog"]) . "</p>";
+            echo "<p><strong>Nummer:</strong> " . htmlspecialchars($row["nummer"]) . "</p>";
+            echo "<p><strong>Title:</strong> " . htmlspecialchars($row["Title"]) . "</p>";
+            echo "<p><strong>Beschreibung:</strong> " . htmlspecialchars($row["Beschreibung"]) . "</p>";
             echo "</div>";
         }
     } else {
@@ -96,5 +94,29 @@ $start = max(1, $end - $range + 1);
         <?php endif; ?>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookList = document.getElementById('book-list');
+        bookList.addEventListener('click', function(event) {
+            const box = event.target.closest('.box');
+            if (box) {
+                const bookId = box.getAttribute('data-id');
+                fetch(`book_details.php?id=${bookId}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        const bookDetails = document.createElement('div');
+                        bookDetails.classList.add('book-details');
+                        bookDetails.innerHTML = data;
+                        document.body.appendChild(bookDetails);
+                        document.querySelectorAll('.box').forEach(b => b.classList.add('blurred'));
+                        bookDetails.addEventListener('click', function() {
+                            bookDetails.remove();
+                            document.querySelectorAll('.box').forEach(b => b.classList.remove('blurred'));
+                        });
+                    });
+            }
+        });
+    });
+</script>
 </body>
 </html>
