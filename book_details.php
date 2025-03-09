@@ -18,7 +18,7 @@ $bookId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 if ($bookId > 0) {
     // Fetch book details
-    $stmt = $conn->prepare("SELECT * FROM buecher WHERE id = ?");
+    $stmt = $conn->prepare("SELECT * FROM books.buecher WHERE id = ?");
     $stmt->bind_param("i", $bookId);
     $stmt->execute();
     $result = $stmt->get_result();

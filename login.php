@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwort = $_POST['passwort'];
 
     // Prepare and bind
-    $stmt = $conn->prepare("SELECT * FROM benutzer WHERE benutzername = ? AND passwort = ? AND admin = 1");
+    $stmt = $conn->prepare("SELECT * FROM books.benutzer WHERE benutzername = ? AND passwort = ? AND admin = 1");
     $stmt->bind_param("ss", $benutzername, $passwort);
 
     // Execute the statement
