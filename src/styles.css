@@ -19,17 +19,27 @@
 }
 
 header {
+    display: flex;
+    justify-content: center; /* Center the text horizontally */
+    align-items: center; /* Center the text vertically */
     width: 95%;
     margin: 20px auto;
     background-color: rgba(117, 110, 110, 0.47);
     color: white;
     padding: 1em 0;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 15px;
+    position: relative;
+}
 
+header p {
+    margin: 0; /* Remove any default margin */
+    padding: 10px;
+}
+
+.login-link {
+    position: absolute;
+    color: white;
+    right : 20px;
 }
 
 body {
@@ -107,6 +117,18 @@ body {
     scale: 150%;
 }
 
+.login-box {
+    padding: 10px;
+    text-align: center;
+    margin: 20px 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    color: black;
+}
+
+.login-box hover {
+    background-color: rgba(231, 229, 229, 0.5);
+}
 
 .pagination-box {
     padding: 10px;

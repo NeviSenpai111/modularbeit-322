@@ -43,18 +43,9 @@ $start = max(1, $end - $range + 1);
 </head>
 <body>
 <header>
-    <aside id="sidebar">
-        <nav>
-            <ul>
-                <li><a href="index.html"><i class="fa-solid fa-house"></i>   Home</a></li>
-                <li><a href="uebermich.html"><i class="fa-solid fa-user"></i>   Über mich</a></li>
-                <li><a href="hobbies.html"><i class="fa-solid fa-brain"></i>   Hobbies</a></li>
-                <li><a href="projekte.html"><i class="fa-solid fa-code"></i>   Projekte</a> </li>
-                <li><a href="impressum.html"><i class="fa-solid fa-envelope"></i>   Impressum</a></li>
-            </ul>
-        </nav>
-    </aside>
     <p>Bücher</p>
+    <a class="login-box login-link" href="login.php">Login</a>
+
 </header>
 <div class="container">
     <div class="container-input">
