@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
@@ -43,7 +45,11 @@ $start = max(1, $end - $range + 1);
 <body>
 <header>
     <p>Bücher</p>
-    <a class="login-box login-link" href="login.php">Login</a>
+    <?php if (isset($_SESSION['admin'])): ?>
+        <a href="admin_dashboard.php" class="login-box login-link">Welcome, <?php echo htmlspecialchars($_SESSION['admin']); ?></a>
+    <?php else: ?>
+        <a class="login-box login-link" href="login.php">Login</a>
+    <?php endif; ?>
 </header>
 <div class="container">
     <div class="container-input">

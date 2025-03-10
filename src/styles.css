@@ -24,6 +24,7 @@
     gap: 10px;
     padding: 10px;
     margin: 10px;
+
 }
 
 header {
@@ -45,7 +46,6 @@ header p {
 }
 
 .login-link {
-    position: absolute;
     color: white;
     right : 20px;
 }
@@ -72,7 +72,6 @@ body {
 
 
 }
-
 
 .book-details {
     position: fixed;
@@ -102,38 +101,6 @@ body {
 .input:focus {
     opacity: 1;
     width: 250px;
-}
-
-#sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    border-radius: 15px;
-    z-index: 1002;
-
-}
-#sidebar nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-#sidebar nav ul li {
-    padding: 8px 8px 8px 32px;
-    text-align: left;
-}
-#sidebar nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    transition: 0.3s;
-}
-#sidebar nav ul li a:hover {
-    background-color: #575757;
 }
 
 .search-form {
