@@ -1,9 +1,15 @@
-function toggleBurgerMenu(element) {
-    element.classList.toggle('active');
-    toggleSidebar();
+
+    function edit_Book(bookId) {
+    window.location.href = `edit_book.php?id=${bookId}`;
 }
 
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.style.width = sidebar.style.width === '250px' ? '0' : '250px';
+    function delete_Book(bookId) {
+        if (confirm('Are you sure you want to delete this book?')) {
+        fetch(`delete_book.php?id=${bookId}`, { method: 'POST' })
+        .then(response => response.text())
+        .then(data => {
+        alert(data);
+        window.location.href = 'index.php';
+        });
+    }
 }
