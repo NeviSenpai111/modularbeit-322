@@ -29,25 +29,12 @@ if ($conn->connect_error) {
     <title>Admin Dashboard</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/src/styles.css">
-    <style>
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-
-
-
-    </style>
 </head>
 <body>
 <header>
-    <div class="flex-container">
-        <div><a class="login-box login-link" href="index.php">Home</a></div>
-        <div><p>Admin Dashboard</p></div>
-        <div><a class="login-link login-box" href="logout.php">Logout</a></div>
-    </div>
+    <div><a href="index.php">Home</a></div>
+    <div><p>Admin Dashboard</p></div>
+    <div><a href="logout.php">Logout</a></div>
 </header>
 
 <div class="container">
@@ -76,8 +63,24 @@ if ($conn->connect_error) {
         $conn->close();
         ?>
     </div>
+
+    <div class="container-input">
+        <h2>Add New Book</h2>
+        <form method="post" action="add_book.php">
+            <label>Katalog: <input type="text" name="katalog" required></label><br>
+            <label>Nummer: <input type="text" name="nummer" required></label><br>
+            <label>Title: <input type="text" name="Title" required></label><br>
+            <label>Kategorie: <input type="text" name="kategorie" required></label><br>
+            <label>Verkauft: <input type="text" name="verkauft" required></label><br>
+            <label>Käufer: <input type="text" name="kaufer" required></label><br>
+            <label>Author: <input type="text" name="autor" required></label><br>
+            <label>Beschreibung: <input type="text" name="Beschreibung" required></label><br>
+            <label>Verfasser: <input type="text" name="verfasser" required></label><br>
+            <label>Zustand: <input type="text" name="zustand" required></label><br>
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
-
 

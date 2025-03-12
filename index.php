@@ -43,14 +43,17 @@ $start = max(1, $end - $range + 1);
     <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
-<header>
-    <p>Bücher</p>
-    <?php if (isset($_SESSION['admin'])): ?>
-        <a href="admin_dashboard.php" class="login-box login-link">Welcome, <?php echo htmlspecialchars($_SESSION['admin']); ?></a>
-    <?php else: ?>
-        <a class="login-box login-link" href="login.php">Login</a>
-    <?php endif; ?>
-</header>
+<div class="header-container">
+    <img src="bilder/Quill_of_Alzuhod.png" class="logo" alt="">
+    <header>
+        <p>Bücher</p>
+        <?php if (isset($_SESSION['admin'])): ?>
+            <a href="admin_dashboard.php" class="login-box login-link">Welcome, <?php echo htmlspecialchars($_SESSION['admin']); ?></a>
+        <?php else: ?>
+            <a class="login-box login-link" href="login.php">Login</a>
+        <?php endif; ?>
+    </header>
+</div>
 <div class="container">
     <div class="container-input">
         <form method="get" action="index.php">

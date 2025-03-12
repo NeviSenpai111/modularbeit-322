@@ -29,20 +29,36 @@
 
 header {
     display: flex;
-    justify-content: center; /* Center the text horizontally */
     align-items: center; /* Center the text vertically */
     width: 95%;
+    height: 75px;
     margin: 20px auto;
     background-color: rgba(117, 110, 110, 0.47);
     color: white;
     padding: 1em 0;
     border-radius: 15px;
     position: relative;
+    justify-content: space-between;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo {
+    margin-right: 0; /* Adjust the space between the logo and the header */
+    width: 100px; /* Adjust the width as needed */
+    height: 75px; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the image fits within the specified dimensions */
 }
 
 header p {
     margin: 0; /* Remove any default margin */
     padding: 10px;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .login-link {
@@ -118,6 +134,7 @@ body {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     color: black;
+    position: absolute;
 }
 
 .login-box hover {
@@ -149,4 +166,10 @@ body {
 .pagination-box a.active {
     background-color: #333;
     color: #fff;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
