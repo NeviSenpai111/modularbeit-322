@@ -41,6 +41,27 @@ header {
     justify-content: space-between;
 }
 
+footer {
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    width: 95%;
+    height: 75px;
+    margin: 20px auto;
+    background-color: rgba(117, 110, 110, 0.47);
+    color: white;
+    padding: 1em 0;
+    border-radius: 15px;
+    position: relative;
+    justify-content: space-between;
+}
+
+footer p {
+    margin: 0; /* Remove any default margin */
+    padding: 10px;
+    text-align: center;
+    flex-grow: 1;
+}
+
 .header-container {
     display: flex;
     align-items: center;
@@ -172,4 +193,155 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Adjust height to fit content */
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 20px auto; /* Center the container */
+    max-width: 400px; /* Set a maximum width */
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-container label {
+    margin-bottom: 5px;
+}
+
+.login-container input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.login-container button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #555;
+}
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-container label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.form-container input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.form-container button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #555;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px;
+}
+
+.button-edit {
+    background-color: #4CAF50; /* Green */
+}
+
+.button-edit:hover {
+    background-color: #45a049;
+}
+
+.button-delete {
+    background-color: #f44336; /* Red */
+}
+
+.button-delete:hover {
+    background-color: #da190b;
+}
+
+.button-add {
+    background-color: #ffffff; /* Green */
+}
+
+.button-add:hover {
+    background-color: #45a049;
+}
+
+.button-logout {
+    background-color: #ffffff; /* Red */
+}
+
+.button-logout:hover {
+    background-color: rgba(231, 229, 229, 0.5);
+}
+
+.button-home {
+    background-color: #ffffff; /* Blue */
+}
+
+.button-home:hover {
+    background-color: rgba(231, 229, 229, 0.5);
 }

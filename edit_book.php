@@ -51,23 +51,77 @@ $conn->close();
     <title>Edit Book</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/src/styles.css">
+    <style>
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-container label {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5px;
+        }
+
+        .form-container input, .form-container textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+
+        .form-container button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <h2>Edit Book</h2>
-    <form method="post" action="edit_book.php?id=<?php echo $bookId; ?>">
-        <label>Katalog: <input type="text" name="katalog" value="<?php echo htmlspecialchars($book['katalog']); ?>"></label><br>
-        <label>Nummer: <input type="text" name="nummer" value="<?php echo htmlspecialchars($book['nummer']); ?>"></label><br>
-        <label>Title: <input type="text" name="Title" value="<?php echo htmlspecialchars($book['Title']); ?>"></label><br>
-        <label>Kategorie: <input type="text" name="kategorie" value="<?php echo htmlspecialchars($book['kategorie']); ?>"></label><br>
-        <label>Verkauft: <input type="text" name="verkauft" value="<?php echo htmlspecialchars($book['verkauft']); ?>"></label><br>
-        <label>Käufer: <input type="text" name="kaufer" value="<?php echo htmlspecialchars($book['kaufer']); ?>"></label><br>
-        <label>Author: <input type="text" name="autor" value="<?php echo htmlspecialchars($book['autor']); ?>"></label><br>
-        <label>Beschreibung: <input type="text" name="Beschreibung" value="<?php echo htmlspecialchars($book['Beschreibung']); ?>"></label><br>
-        <label>Verfasser: <input type="text" name="verfasser" value="<?php echo htmlspecialchars($book['verfasser']); ?>"></label><br>
-        <label>Zustand: <input type="text" name="zustand" value="<?php echo htmlspecialchars($book['zustand']); ?>"></label><br>
-        <button type="submit">Save</button>
-    </form>
+    <div class="form-container">
+        <h2>Edit Book</h2>
+        <form method="post" action="edit_book.php?id=<?php echo $bookId; ?>">
+            <label>Katalog: <input type="text" name="katalog" value="<?php echo htmlspecialchars($book['katalog']); ?>"></label>
+            <label>Nummer: <input type="text" name="nummer" value="<?php echo htmlspecialchars($book['nummer']); ?>"></label>
+            <label>Title: <input type="text" name="Title" value="<?php echo htmlspecialchars($book['Title']); ?>"></label>
+            <label>Kategorie: <input type="text" name="kategorie" value="<?php echo htmlspecialchars($book['kategorie']); ?>"></label>
+            <label>Verkauft: <input type="text" name="verkauft" value="<?php echo htmlspecialchars($book['verkauft']); ?>"></label>
+            <label>Käufer: <input type="text" name="kaufer" value="<?php echo htmlspecialchars($book['kaufer']); ?>"></label>
+            <label>Author: <input type="text" name="autor" value="<?php echo htmlspecialchars($book['autor']); ?>"></label>
+            <label>Beschreibung: <textarea name="Beschreibung"><?php echo htmlspecialchars($book['Beschreibung']); ?></textarea></label>
+            <label>Verfasser: <input type="text" name="verfasser" value="<?php echo htmlspecialchars($book['verfasser']); ?>"></label>
+            <label>Zustand: <input type="text" name="zustand" value="<?php echo htmlspecialchars($book['zustand']); ?>"></label>
+            <button type="submit">Save</button>
+        </form>
+    </div>
 </div>
+<footer>
+    <p>&copy; 2025 Bücher</p>
+</footer>
 </body>
 </html>

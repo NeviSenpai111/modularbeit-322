@@ -48,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +56,10 @@ $conn->close();
     <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
+<header>
+    <a href="index.php" class="button button-home">Home</a>
+    <p>Admin Login</p>
+</header>
 <div class="login-container">
     <h2>Admin Login</h2>
     <?php if (isset($error)): ?>
@@ -70,5 +73,8 @@ $conn->close();
         <button type="submit">Login</button>
     </form>
 </div>
+<footer>
+    <p>&copy; 2025 Bücher</p>
+</footer>
 </body>
 </html>

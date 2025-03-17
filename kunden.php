@@ -17,18 +17,18 @@ if ($conn->connect_error) {
 
 // Get search term and criteria from the form
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-$searchCriteria = isset($_GET['criteria']) ? $_GET['criteria'] : 'Title';
+$searchCriteria = isset($_GET['criteria']) ? $_GET['criteria'] : 'name';
 
 // Get current page number from the form
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 20;
 $offset = ($page - 1) * $limit;
 
-$totalSql = "SELECT COUNT(*) as total FROM books.buecher WHERE $searchCriteria LIKE '%$searchTerm%'";
+$totalSql = "SELECT COUNT(*) as total FROM books.kunden WHERE $searchCriteria LIKE '%$searchTerm%'";
 $totalResult = $conn->query($totalSql);
 $totalRow = $totalResult->fetch_assoc();
-$totalBooks = $totalRow['total'];
-$totalPages = ceil($totalBooks / $limit);
+$totalKunden = $totalRow['total'];
+$totalPages = ceil($totalKunden / $limit);
 
 $range = 5;
 $start = max(1, $page - floor($range / 2));
@@ -39,7 +39,7 @@ $start = max(1, $end - $range + 1);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Books</title>
+    <title>Kunden</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/src/styles.css">
 </head>
@@ -47,7 +47,7 @@ $start = max(1, $end - $range + 1);
 <div class="header-container">
     <img src="bilder/Quill_of_Alzuhod.png" class="logo" alt="">
     <header>
-        <p>Bücher</p>
+        <p>Kunden</p>
         <?php if (isset($_SESSION['admin'])): ?>
             <a href="admin_dashboard.php" class="login-box login-link">Welcome, <?php echo htmlspecialchars($_SESSION['admin']); ?></a>
         <?php else: ?>
@@ -57,13 +57,12 @@ $start = max(1, $end - $range + 1);
 </div>
 <div class="container">
     <div class="container-input">
-        <form method="get" action="index.php">
+        <form method="get" action="kunden.php">
             <label>
                 <input type="text" placeholder="Search" name="search" class="input" value="<?php echo htmlspecialchars($searchTerm); ?>">
                 <select name="criteria" class="input">
-                    <option value="Title" <?php if ($searchCriteria == 'Title') echo 'selected'; ?>>Title</option>
-                    <option value="autor" <?php if ($searchCriteria == 'autor') echo 'selected'; ?>>Author</option>
-                    <option value="kategorie" <?php if ($searchCriteria == 'kategorie') echo 'selected'; ?>>Kategorie</option>
+                    <option value="name" <?php if ($searchCriteria == 'name') echo 'selected'; ?>>Name</option>
+                    <option value="email" <?php if ($searchCriteria == 'email') echo 'selected'; ?>>Email</option>
                 </select>
                 <button type="submit" class="button" hidden="hidden">Search</button>
             </label>
@@ -73,17 +72,15 @@ $start = max(1, $end - $range + 1);
         </svg>
     </div>
 </div>
-<div class="container" id="book-list">
+<div class="container" id="kunden-list">
     <?php
-    $result = $conn->query("SELECT * FROM books.buecher WHERE $searchCriteria LIKE '%$searchTerm%' LIMIT $limit OFFSET $offset");
+    $result = $conn->query("SELECT * FROM books.kunden WHERE $searchCriteria LIKE '%$searchTerm%' LIMIT $limit OFFSET $offset");
     if ($result->num_rows > 0) {
         // Output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "<div class='box' data-id='" . $row["id"] . "'>";
-            echo "<p><strong>Katalog:</strong> " . htmlspecialchars($row["katalog"]) . "</p>";
-            echo "<p><strong>Nummer:</strong> " . htmlspecialchars($row["nummer"]) . "</p>";
-            echo "<p><strong>Title:</strong> " . htmlspecialchars($row["Title"]) . "</p>";
-            echo "<p><strong>Beschreibung:</strong> " . htmlspecialchars($row["Beschreibung"]) . "</p>";
+            echo "<div class='box' data-id='" . $row["kid"] . "'>";
+            echo "<p><strong>Name:</strong> " . htmlspecialchars($row["vorname"]) . "</p>";
+            echo "<p><strong>Nachname:</strong> " . htmlspecialchars($row["name"]) . "</p>";
             echo "</div>";
         }
     } else {
@@ -91,7 +88,6 @@ $start = max(1, $end - $range + 1);
     }
 
     // Close connection
-    $conn->close();
     ?>
 </div>
 <div class="container">
@@ -111,43 +107,52 @@ $start = max(1, $end - $range + 1);
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const bookList = document.getElementById('book-list');
-        bookList.addEventListener('click', function(event) {
+        const kundenList = document.getElementById('kunden-list');
+        kundenList.addEventListener('click', function(event) {
             const box = event.target.closest('.box');
             if (box) {
-                const bookId = box.getAttribute('data-id');
-                fetch(`book_details.php?id=${bookId}`)
-                    .then(response => response.text())
+                const kundenId = box.getAttribute('data-id');
+                console.log(`Fetching details for Kunden ID: ${kundenId}`);
+                fetch(`Kunden_details.php?id=${kundenId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
                     .then(data => {
-                        const bookDetails = document.createElement('div');
-                        bookDetails.classList.add('book-details');
-                        bookDetails.innerHTML = data;
-                        document.body.appendChild(bookDetails);
+                        console.log('Kunden details fetched successfully');
+                        const kundenDetails = document.createElement('div');
+                        kundenDetails.classList.add('book-details');
+                        kundenDetails.innerHTML = data;
+                        document.body.appendChild(kundenDetails);
                         document.querySelectorAll('.box').forEach(b => b.classList.add('blurred'));
-                        bookDetails.addEventListener('click', function() {
-                            bookDetails.remove();
+                        kundenDetails.addEventListener('click', function() {
+                            kundenDetails.remove();
                             document.querySelectorAll('.box').forEach(b => b.classList.remove('blurred'));
                         });
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
                     });
             }
         });
     });
 
-    function edit_Book(bookId) {
-        window.location.href = `edit_book.php?id=${bookId}`;
+    function edit_Kunden(kundenId) {
+        window.location.href = `edit_kunden.php?id=${kundenId}`;
     }
 
-    function delete_Book(bookId) {
-        if (confirm('Are you sure you want to delete this book?')) {
-            fetch(`delete_book.php?id=${bookId}`, { method: 'POST' })
+    function delete_Kunden(kundenId) {
+        if (confirm('Are you sure you want to delete this Kunden?')) {
+            fetch(`delete_kunden.php?id=${kundenId}`, { method: 'POST' })
                 .then(response => response.text())
                 .then(data => {
                     alert(data);
-                    window.location.href = 'index.php';
+                    window.location.href = 'kunden.php';
                 });
         }
     }
-
 </script>
 <footer>
     <p>&copy; 2025 Bücher</p>

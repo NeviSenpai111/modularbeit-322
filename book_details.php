@@ -35,7 +35,7 @@ $conn->close();
 
 if ($book): ?>
     <div class="box-details">
-        <img src="<?php echo htmlspecialchars($book['foto']); ?>" alt="Image of <?php echo htmlspecialchars($book['Title']); ?>">
+        <img src="/bilder/book.jpg" alt="Image of <?php echo htmlspecialchars($book['Title']); ?>">
         <p><strong>Katalog:</strong> <?php echo htmlspecialchars($book['katalog']); ?></p>
         <p><strong>Nummer:</strong> <?php echo htmlspecialchars($book['nummer']); ?></p>
         <p><strong>Title:</strong> <?php echo htmlspecialchars($book['Title']); ?></p>
@@ -47,8 +47,8 @@ if ($book): ?>
         <p><strong>Verfasser:</strong> <?php echo htmlspecialchars($book['verfasser']); ?></p>
         <p><strong>Zustand:</strong> <?php echo htmlspecialchars($book['zustand']); ?></p>
         <?php if (isset($_SESSION['admin'])): ?>
-            <button onclick="edit_Book(<?php echo $book['id']; ?>)">Edit</button>
-            <button onclick="delete_Book(<?php echo $book['id']; ?>)">Delete</button>
+            <button class="button button-edit" onclick="edit_Book(<?php echo $book['id']; ?>)">Edit</button>
+            <button class="button button-delete" onclick="delete_Book(<?php echo $book['id']; ?>)">Delete</button>
         <?php endif; ?>
     </div>
 <?php else: ?>

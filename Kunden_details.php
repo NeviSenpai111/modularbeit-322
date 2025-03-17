@@ -1,0 +1,52 @@
+<?php
+session_start();
+
+// Database connection parameters
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "books";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get Kunden ID from URL
+$kundenId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+if ($kundenId > 0) {
+    // Fetch Kunden details
+    $stmt = $conn->prepare("SELECT * FROM books.kunden WHERE kid = ?");
+    $stmt->bind_param("i", $kundenId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $kunden = $result->fetch_assoc();
+    $stmt->close();
+} else {
+    die("Invalid Kunden ID.");
+}
+
+// Close connection
+$conn->close();
+
+if ($kunden): ?>
+    <div class="box-details">
+        <p><strong>Name:</strong> <?php echo htmlspecialchars($kunden['vorname']); ?></p>
+        <p><strong>Nachname:</strong> <?php echo htmlspecialchars($kunden['name']); ?></p>
+        <p><strong>Email:</strong> <?php echo htmlspecialchars($kunden['email']); ?></p>
+        <p><strong>Geburtstag:</strong> <?php echo htmlspecialchars($kunden['geburtstag']); ?></p>
+        <p><strong>Geschlecht:</strong> <?php echo htmlspecialchars($kunden['geschlecht']); ?></p>
+        <p><strong>Kunde Seit</strong> <?php echo htmlspecialchars($kunden['kunde_seit']); ?> </p>
+        <p><strong>Email</strong> <?php echo htmlspecialchars($kunden['email']); ?> </p>
+        <?php if (isset($_SESSION['admin'])): ?>
+            <button class="button button-edit" onclick="edit_Kunden(<?php echo $kunden['kid']; ?>)">Edit</button>
+            <button class="button button-delete" onclick="delete_Kunden(<?php echo $kunden['kid']; ?>)">Delete</button>
+        <?php endif; ?>
+    </div>
+<?php else: ?>
+    <p>Kunden not found.</p>
+<?php endif; ?>
