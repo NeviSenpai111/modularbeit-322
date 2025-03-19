@@ -60,6 +60,7 @@ footer p {
     padding: 10px;
     text-align: center;
     flex-grow: 1;
+    position: sticky;
 }
 
 .header-container {

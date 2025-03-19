@@ -3383,7 +3383,7 @@ INSERT INTO `kategorien` (`id`, `kategorie`) VALUES
 --
 
 CREATE TABLE `kunden` (
-  `kid` int(11) NOT NULL,
+  `kid` int(11) NOT NULL AUTO_INCREMENT,
   `geburtstag` date NOT NULL,
   `vorname` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,

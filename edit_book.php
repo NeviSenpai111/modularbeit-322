@@ -102,6 +102,10 @@ $conn->close();
     </style>
 </head>
 <body>
+<header>
+    <p>Edit Book</p>
+</header>
+
 <div class="container">
     <div class="form-container">
         <h2>Edit Book</h2>
