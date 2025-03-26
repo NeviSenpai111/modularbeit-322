@@ -21,7 +21,7 @@ $searchCriteria = isset($_GET['criteria']) ? $_GET['criteria'] : 'name';
 
 // Get current page number from the form
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = 20;
+$limit = 30;
 $offset = ($page - 1) * $limit;
 
 $totalSql = "SELECT COUNT(*) as total FROM books.kunden WHERE $searchCriteria LIKE '%$searchTerm%'";

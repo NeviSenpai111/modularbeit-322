@@ -35,6 +35,7 @@ $conn->close();
 
 if ($kunden): ?>
     <div class="box-details">
+        <img src="/bilder/kunde.png" alt="BILD">
         <p><strong>Name:</strong> <?php echo htmlspecialchars($kunden['vorname']); ?></p>
         <p><strong>Nachname:</strong> <?php echo htmlspecialchars($kunden['name']); ?></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($kunden['email']); ?></p>
