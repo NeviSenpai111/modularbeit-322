@@ -91,6 +91,7 @@ header p {
 body {
     background: #404040;
     font-family: 'Roboto', sans-serif;
+
 }
 
 
@@ -208,6 +209,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 20px auto; /* Center the container */
     max-width: 400px; /* Set a maximum width */
+    flex: 1;
 }
 
 .login-container h2 {

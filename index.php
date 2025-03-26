@@ -18,6 +18,7 @@ if ($conn->connect_error) {
 // Get search term and criteria from the form
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $searchCriteria = isset($_GET['criteria']) ? $_GET['criteria'] : 'Title';
+$sortOrder = isset($_GET['sort']) ? $_GET['sort'] : 'Title ASC';
 
 // Get current page number from the form
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -49,9 +50,9 @@ $start = max(1, $end - $range + 1);
     <header>
         <p>Bücher</p>
         <?php if (isset($_SESSION['admin'])): ?>
-            <a href="admin_dashboard.php" class="login-box login-link">Welcome, <?php echo htmlspecialchars($_SESSION['admin']); ?></a>
+            <a href="admin_dashboard.php" class="login-box login-link button-home">Welcome, <?php echo htmlspecialchars($_SESSION['admin']); ?></a>
         <?php else: ?>
-            <a class="login-box login-link" href="login.php">Login</a>
+            <a class="login-box login-link button-home" href="login.php">Login</a>
         <?php endif; ?>
     </header>
 </div>
@@ -60,10 +61,16 @@ $start = max(1, $end - $range + 1);
         <form method="get" action="index.php">
             <label>
                 <input type="text" placeholder="Search" name="search" class="input" value="<?php echo htmlspecialchars($searchTerm); ?>">
-                <select name="criteria" class="input">
+                <select name="criteria" class="input" onchange="this.form.submit()">
                     <option value="Title" <?php if ($searchCriteria == 'Title') echo 'selected'; ?>>Title</option>
                     <option value="autor" <?php if ($searchCriteria == 'autor') echo 'selected'; ?>>Author</option>
                     <option value="kategorie" <?php if ($searchCriteria == 'kategorie') echo 'selected'; ?>>Kategorie</option>
+                </select>
+                <select name="sort" class="input" onchange="this.form.submit()">
+                    <option value="Title ASC" <?php if ($sortOrder == 'Title ASC') echo 'selected'; ?>>Title (A-Z)</option>
+                    <option value="Title DESC" <?php if ($sortOrder == 'Title DESC') echo 'selected'; ?>>Title (Z-A)</option>
+                    <option value="autor ASC" <?php if ($sortOrder == 'autor ASC') echo 'selected'; ?>>Author (A-Z)</option>
+                    <option value="autor DESC" <?php if ($sortOrder == 'autor DESC') echo 'selected'; ?>>Author (Z-A)</option>
                 </select>
                 <button type="submit" class="button" hidden="hidden">Search</button>
             </label>
@@ -75,7 +82,7 @@ $start = max(1, $end - $range + 1);
 </div>
 <div class="container" id="book-list">
     <?php
-    $result = $conn->query("SELECT * FROM books.buecher WHERE $searchCriteria LIKE '%$searchTerm%' LIMIT $limit OFFSET $offset");
+    $result = $conn->query("SELECT * FROM books.buecher WHERE $searchCriteria LIKE '%$searchTerm%' ORDER BY $sortOrder LIMIT $limit OFFSET $offset");
     if ($result->num_rows > 0) {
         // Output data of each row
         while($row = $result->fetch_assoc()) {
@@ -97,15 +104,15 @@ $start = max(1, $end - $range + 1);
 <div class="container">
     <div class="pagination-box">
         <?php if ($page > 1): ?>
-            <a href="?search=<?php echo urlencode($searchTerm); ?>&criteria=<?php echo urlencode($searchCriteria); ?>&page=<?php echo $page - 1; ?>">Previous</a>
+            <a href="?search=<?php echo urlencode($searchTerm); ?>&criteria=<?php echo urlencode($searchCriteria); ?>&sort=<?php echo urlencode($sortOrder); ?>&page=<?php echo $page - 1; ?>">Previous</a>
         <?php endif; ?>
 
         <?php for ($i = $start; $i <= $end; $i++): ?>
-            <a href="?search=<?php echo urlencode($searchTerm); ?>&criteria=<?php echo urlencode($searchCriteria); ?>&page=<?php echo $i; ?>"<?php if ($i == $page) echo ' class="active"'; ?>><?php echo $i; ?></a>
+            <a href="?search=<?php echo urlencode($searchTerm); ?>&criteria=<?php echo urlencode($searchCriteria); ?>&sort=<?php echo urlencode($sortOrder); ?>&page=<?php echo $i; ?>"<?php if ($i == $page) echo ' class="active"'; ?>><?php echo $i; ?></a>
         <?php endfor; ?>
 
         <?php if ($page < $totalPages): ?>
-            <a href="?search=<?php echo urlencode($searchTerm); ?>&criteria=<?php echo urlencode($searchCriteria); ?>&page=<?php echo $page + 1; ?>">Next</a>
+            <a href="?search=<?php echo urlencode($searchTerm); ?>&criteria=<?php echo urlencode($searchCriteria); ?>&sort=<?php echo urlencode($sortOrder); ?>&page=<?php echo $page + 1; ?>">Next</a>
         <?php endif; ?>
     </div>
 </div>
