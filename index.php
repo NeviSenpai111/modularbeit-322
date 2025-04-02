@@ -1,42 +1,45 @@
 <?php
 session_start();
 
-// Database connection parameters
+// Datenbank Verbindung
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "books";
 
-// Create connection
+// Verbindung erstellen
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Verbindung überprüfen
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get search term and criteria from the form
+// Suchbegriff und Sortierkriterien aus dem Formular abrufen
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $searchCriteria = isset($_GET['criteria']) ? $_GET['criteria'] : 'Title';
 $sortOrder = isset($_GET['sort']) ? $_GET['sort'] : 'Title ASC';
 
-// Get current page number from the form
+// Seitenparameter für die Paginierung
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 20;
 $offset = ($page - 1) * $limit;
 
+// Validierung der Eingaben
 $totalSql = "SELECT COUNT(*) as total FROM books.buecher WHERE $searchCriteria LIKE '%$searchTerm%'";
 $totalResult = $conn->query($totalSql);
 $totalRow = $totalResult->fetch_assoc();
 $totalBooks = $totalRow['total'];
 $totalPages = ceil($totalBooks / $limit);
 
+// Paginierung
 $range = 5;
 $start = max(1, $page - floor($range / 2));
 $end = min($totalPages, $start + $range - 1);
 $start = max(1, $end - $range + 1);
 ?>
 
+<!-- Header und CSS -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +47,7 @@ $start = max(1, $end - $range + 1);
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/src/styles.css">
 </head>
+<!--Body vom HTML-->
 <body>
 <div class="header-container">
     <img src="bilder/Quill_of_Alzuhod.png" class="logo" alt="">
@@ -56,6 +60,7 @@ $start = max(1, $end - $range + 1);
         <?php endif; ?>
     </header>
 </div>
+<!-- Suche und Filter -->
 <div class="container">
     <div class="container-input">
         <form method="get" action="index.php">
@@ -80,9 +85,10 @@ $start = max(1, $end - $range + 1);
         </svg>
     </div>
 </div>
+<!-- Buchliste -->
 <div class="container" id="book-list">
     <?php
-    $result = $conn->query("SELECT * FROM books.buecher WHERE $searchCriteria LIKE '%$searchTerm%' ORDER BY $sortOrder LIMIT $limit OFFSET $offset");
+    $result = $conn->query("SELECT b.*, k.kategorie AS kategorie_name, z.beschreibung AS zustand_name FROM books.buecher b LEFT JOIN books.kategorien k ON b.kategorie = k.id LEFT JOIN books.zustaende z ON b.zustand = z.zustand WHERE $searchCriteria LIKE '%$searchTerm%' ORDER BY $sortOrder LIMIT $limit OFFSET $offset");
     if ($result->num_rows > 0) {
         // Output data of each row
         while($row = $result->fetch_assoc()) {
@@ -100,6 +106,7 @@ $start = max(1, $end - $range + 1);
     // Close connection
     $conn->close();
     ?>
+    <!-- Pagination -->
 </div>
 <div class="container">
     <div class="pagination-box">
@@ -116,6 +123,7 @@ $start = max(1, $end - $range + 1);
         <?php endif; ?>
     </div>
 </div>
+<!-- Java Script für Buchdetails -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const bookList = document.getElementById('book-list');
@@ -139,7 +147,7 @@ $start = max(1, $end - $range + 1);
             }
         });
     });
-
+// Edit and Delete Buttons und Funktionen
     function edit_Book(bookId) {
         window.location.href = `edit_book.php?id=${bookId}`;
     }

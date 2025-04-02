@@ -1,350 +1,474 @@
-@tailwind utilities;
+/* Allgemeine Stile */
+    /* Container für die Buchliste */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+ 
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
+ 
+       /* Box für jedes Buch */
+    .box {
+       padding: 10px;
+       margin: 10px;
+       width: 200px;
+       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+       background-color: rgba(231, 229, 229, 0.5);
+       border-radius: 10px;
+   }
+ 
 
-.box {
-    padding: 10px;
-    margin: 10px;
-    width: 200px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: rgba(231, 229, 229, 0.5);
-    border-radius: 10px;
+ 
+       /* Box für Buchdetails */
+   .box-details {
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+       padding: 10px;
+       margin: 10px;
+   }
+ 
 
+ 
+       /* Header-Styling */
+   header {
+       display: flex;
+       align-items: center; /* Text vertikal zentrieren */
+       width: 95%;
+       height: 75px;
+       margin: 20px auto;
+       background-color: rgba(117, 110, 110, 0.47);
+       color: white;
+       padding: 1em 0;
+       border-radius: 15px;
+       position: relative;
+       justify-content: space-between;
+   }
+ 
 
-}
+ 
+       /* Footer-Styling */
+   footer {
+       display: flex;
+       align-items: center; /* Text vertikal zentrieren */
+       width: 95%;
+       height: 75px;
+       margin: 20px auto;
+       background-color: rgba(117, 110, 110, 0.47);
+       color: white;
+       padding: 1em 0;
+       border-radius: 15px;
+       position: relative;
+       justify-content: space-between;
+   }
+ 
 
-.box-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    margin: 10px;
+ 
+       /* Footer-Text */
+   footer p {
+       margin: 0; /* Standardmarge entfernen */
+       padding: 10px;
+       text-align: center;
+       flex-grow: 1;
+       position: sticky;
+   }
+ 
 
-}
+ 
+       /* Container für den Header */
+   .header-container {
+       display: flex;
+       align-items: center;
+       justify-content: flex-start;
+   }
+ 
 
-header {
-    display: flex;
-    align-items: center; /* Center the text vertically */
-    width: 95%;
-    height: 75px;
-    margin: 20px auto;
-    background-color: rgba(117, 110, 110, 0.47);
-    color: white;
-    padding: 1em 0;
-    border-radius: 15px;
-    position: relative;
-    justify-content: space-between;
-}
+ 
+       /* Logo-Styling */
+   .logo {
+       margin-right: 0; /* Abstand zwischen Logo und Header anpassen */
+       width: 100px; /* Breite anpassen */
+       height: 75px; /* Seitenverhältnis beibehalten */
+       object-fit: contain; /* Bild innerhalb der angegebenen Abmessungen anpassen */
+   }
+ 
 
-footer {
-    display: flex;
-    align-items: center; /* Center the text vertically */
-    width: 95%;
-    height: 75px;
-    margin: 20px auto;
-    background-color: rgba(117, 110, 110, 0.47);
-    color: white;
-    padding: 1em 0;
-    border-radius: 15px;
-    position: relative;
-    justify-content: space-between;
-}
+ 
+       /* Header-Text */
+   header p {
+       margin: 0; /* Standardmarge entfernen */
+       padding: 10px;
+       text-align: center;
+       flex-grow: 1;
+   }
+ 
 
-footer p {
-    margin: 0; /* Remove any default margin */
-    padding: 10px;
-    text-align: center;
-    flex-grow: 1;
-    position: sticky;
-}
+ 
+       /* Styling für den Login-Link */
+   .login-link {
+       color: white;
+       right: 20px;
+   }
+ 
 
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
+ 
+       /* Body-Styling */
+   body {
+       background: #404040;
+       font-family: 'Roboto', sans-serif;
+   }
+ 
 
-.logo {
-    margin-right: 0; /* Adjust the space between the logo and the header */
-    width: 100px; /* Adjust the width as needed */
-    height: 75px; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensure the image fits within the specified dimensions */
-}
+ 
+       /* Container für Eingabefelder */
+   .container-input {
+       position: relative;
+   }
+ 
 
-header p {
-    margin: 0; /* Remove any default margin */
-    padding: 10px;
-    text-align: center;
-    flex-grow: 1;
-}
+ 
+       /* Eingabefeld-Styling */
+   .input {
+       width: 150px;
+       padding: 10px 0 10px 40px;
+       border-radius: 9999px;
+       border: solid 1px #333;
+       transition: all .2s ease-in-out;
+       outline: none;
+       opacity: 0.8;
+       align-content: center;
+   }
+ 
 
-.login-link {
-    color: white;
-    right : 20px;
-}
+ 
+       /* Styling für Buchdetails */
+   .book-details {
+       position: fixed;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 60%;
+       height: 60%;
+       background-color: #575757;
+       z-index: 1000;
+       overflow: auto;
+       padding: 20px;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+       border-radius: 10px;
+   }
+ 
 
-body {
-    background: #404040;
-    font-family: 'Roboto', sans-serif;
+ 
+       /* Verschwommener Effekt */
+   .blurred {
+       filter: blur(0px);
+   }
+ 
 
-}
+ 
+       /* SVG-Icon im Eingabefeld */
+   .container-input svg {
+       position: absolute;
+       top: 50%;
+       left: 10px;
+       transform: translate(0, -50%);
+   }
+ 
 
+ 
+       /* Fokus-Styling für Eingabefeld */
+   .input:focus {
+       opacity: 1;
+       width: 250px;
+   }
+ 
 
-.container-input {
-    position: relative;
-}
+ 
+       /* Suchformular-Styling */
+   .search-form {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin: 20px 0;
+       scale: 150%;
+   }
+ 
 
-.input {
-    width: 150px;
-    padding: 10px 0 10px 40px;
-    border-radius: 9999px;
-    border: solid 1px #333;
-    transition: all .2s ease-in-out;
-    outline: none;
-    opacity: 0.8;
-    align-content: center;
+ 
+       /* Login-Box-Styling */
+   .login-box {
+       padding: 10px;
+       text-align: center;
+       margin: 20px 0;
+       background-color: rgb(255, 255, 255);
+       border-radius: 10px;
+       color: black;
+       position: absolute;
+   }
+ 
 
+ 
+       /* Hover-Effekt für Login-Box */
+   .login-box hover {
+       background-color: rgba(231, 229, 229, 0.5);
+   }
+ 
 
-}
+ 
+       /* Paginierungs-Box-Styling */
+   .pagination-box {
+       padding: 10px;
+       margin: 20px 0;
+       border-radius: 10px;
+       background-color: rgba(255, 255, 255, 0.1);
+       text-align: center;
+   }
+ 
 
-.book-details {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    background-color: #575757;
-    z-index: 1000;
-    overflow: auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-.blurred {
-    filter: blur(0px);
-}
+ 
+       /* Links in der Paginierungs-Box */
+   .pagination-box a {
+       margin: 0 5px;
+       padding: 5px 10px;
+       text-decoration: none;
+       color: #333;
+       background-color: #fff;
+       border-radius: 5px;
+       transition: background-color 0.3s;
+   }
+ 
 
-.container-input svg {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translate(0, -50%);
-}
+ 
+       /* Hover-Effekt für Paginierungs-Links */
+   .pagination-box a:hover {
+       background-color: rgba(231, 229, 229, 0.5);
+   }
+ 
 
-.input:focus {
-    opacity: 1;
-    width: 250px;
-}
+ 
+       /* Aktiver Link in der Paginierungs-Box */
+   .pagination-box a.active {
+       background-color: #333;
+       color: #fff;
+   }
+ 
 
-.search-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    scale: 150%;
-}
+ 
+       /* Flex-Container */
+   .flex-container {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+   }
+ 
 
-.login-box {
-    padding: 10px;
-    text-align: center;
-    margin: 20px 0;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    color: black;
-    position: absolute;
-}
+ 
+       /* Login-Container-Styling */
+   .login-container {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       height: auto; /* Höhe an den Inhalt anpassen */
+       background-color: rgba(255, 255, 255, 0.1);
+       padding: 20px;
+       border-radius: 10px;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+       margin: 20px auto; /* Container zentrieren */
+       max-width: 400px; /* Maximale Breite festlegen */
+       flex: 1;
+   }
+ 
 
-.login-box hover {
-    background-color: rgba(231, 229, 229, 0.5);
-}
+ 
+       /* Überschrift im Login-Container */
+   .login-container h2 {
+       margin-bottom: 20px;
+   }
+ 
 
-.pagination-box {
-    padding: 10px;
-    margin: 20px 0;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    text-align: center;
-}
+ 
+       /* Formular im Login-Container */
+   .login-container form {
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+   }
+ 
 
-.pagination-box a {
-    margin: 0 5px;
-    padding: 5px 10px;
-    text-decoration: none;
-    color: #333;
-    background-color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
+ 
+       /* Label im Login-Container */
+   .login-container label {
+       margin-bottom: 5px;
+   }
+ 
 
-.pagination-box a:hover {
-    background-color: rgba(231, 229, 229, 0.5);
-}
+ 
+       /* Eingabefelder im Login-Container */
+   .login-container input {
+       padding: 10px;
+       border-radius: 5px;
+       border: 1px solid #333;
+   }
+ 
 
-.pagination-box a.active {
-    background-color: #333;
-    color: #fff;
-}
-
-.flex-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto; /* Adjust height to fit content */
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin: 20px auto; /* Center the container */
-    max-width: 400px; /* Set a maximum width */
-    flex: 1;
-}
-
-.login-container h2 {
-    margin-bottom: 20px;
-}
-
-.login-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.login-container label {
-    margin-bottom: 5px;
-}
-
-.login-container input {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-}
-
-.login-container button {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+ 
+       /* Button im Login-Container */
+   .login-container button {
+       padding: 10px;
+       border-radius: 5px;
+       border: none;
+       background-color: #333;
+       color: white;
+       cursor: pointer;
+       transition: background-color 0.3s;
+   }
 
 .login-container button:hover {
     background-color: #555;
 }
+ 
 
-.error {
-    color: red;
-    margin-bottom: 10px;
-}
+ 
+       /* Fehlernachricht */
+   .error {
+       color: red;
+       margin-bottom: 10px;
+   }
+ 
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin: 20px 0;
-}
+ 
+       /* Formular-Container */
+   .form-container {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       background-color: rgba(255, 255, 255, 0.1);
+       padding: 20px;
+       border-radius: 10px;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+       margin: 20px 0;
+   }
+ 
 
-.form-container h2 {
-    margin-bottom: 20px;
-}
+ 
+       /* Überschrift im Formular-Container */
+   .form-container h2 {
+       margin-bottom: 20px;
+   }
+ 
 
-.form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+ 
+       /* Formular im Formular-Container */
+   .form-container form {
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+   }
+ 
 
-.form-container label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5px;
-}
+ 
+       /* Label im Formular-Container */
+   .form-container label {
+       display: flex;
+       flex-direction: column;
+       margin-bottom: 5px;
+   }
+ 
 
-.form-container input {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-}
+ 
+       /* Eingabefelder im Formular-Container */
+   .form-container input {
+       padding: 10px;
+       border-radius: 5px;
+       border: 1px solid #333;
+   }
+ 
 
-.form-container button {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+ 
+       /* Button im Formular-Container */
+   .form-container button {
+       padding: 10px;
+       border-radius: 5px;
+       border: none;
+       background-color: #333;
+       color: white;
+       cursor: pointer;
+       transition: background-color 0.3s;
+   }
 
 .form-container button:hover {
     background-color: #555;
 }
+ 
 
-.button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    color: #000000;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 10px;
-}
+ 
+       /* Allgemeine Button-Styling */
+   .button {
+       padding: 10px 20px;
+       border-radius: 5px;
+       border: none;
+       color: #000000;
+       cursor: pointer;
+       transition: background-color 0.3s;
+       margin: 10px;
+   }
+ 
 
-.button-edit {
-    background-color: #4CAF50; /* Green */
-}
+ 
+       /* Edit-Button */
+   .button-edit {
+       background-color: #4CAF50; /* Grün */
+   }
 
 .button-edit:hover {
     background-color: #45a049;
 }
+ 
 
-.button-delete {
-    background-color: #f44336; /* Red */
-}
+ 
+       /* Delete-Button */
+   .button-delete {
+       background-color: #f44336; /* Rot */
+   }
 
 .button-delete:hover {
     background-color: #da190b;
 }
+ 
 
-.button-add {
-    background-color: #ffffff; /* Green */
-}
+ 
+       /* Add-Button */
+   .button-add {
+       background-color: #ffffff; /* Grün */
+   }
 
 .button-add:hover {
     background-color: #45a049;
 }
+ 
 
-.button-logout {
-    background-color: #ffffff; /* Red */
-}
+ 
+       /* Logout-Button */
+   .button-logout {
+       background-color: #ffffff; /* Rot */
+   }
 
 .button-logout:hover {
     background-color: rgba(231, 229, 229, 0.5);
 }
+ 
 
-.button-home {
-    background-color: #ffffff; /* Blue */
-}
+ 
+       /* Home-Button */
+   .button-home {
+       background-color: #ffffff; /* Blau */
+   }
 
 .button-home:hover {
     background-color: rgba(231, 229, 229, 0.5);
 }
+ 
