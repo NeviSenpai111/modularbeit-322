@@ -1,14 +1,3 @@
-
-- [[#Projektbeschreibung]]
-	- [[#Bücher Liste mit allen Büchern. Die Bücher sollen | Bücher]]
-	- [[#Kunden Kunden suchen. Die Kunden sollen (Name, Vorname, ...) (Admin) | Kunden]]
-	- [[#Administrator]]
-- [[#Software-Ergonomie|Software-Ergonomie]]
-- [[#Style Guidelines]]
-- [[#Struktur]]
-- [[#Navigation]]
-- [[#Masken]]
-
 # Projektbeschreibung
 
 In der Modularbeit des Modules 322 geht es um eine Webseite und diese soll für eine Bibliothek sein welche eine Online für Bücher und Nutzer Verwaltung. 
