@@ -45,7 +45,7 @@ $start = max(1, $end - $range + 1);
 <head>
     <title>Books</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="src/styles.css">
 </head>
 <!--Body vom HTML-->
 <body>

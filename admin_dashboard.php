@@ -27,13 +27,13 @@ if ($conn->connect_error) {
 <head>
     <title>Admin Dashboard</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
 <header>
     <div><a href="index.php" class="button button-home">Home</a></div>
-    <div><p>Admin Dashboard</p></div>
     <a href="kunden.php" class="button button-home">Manage Kunden</a>
+    <a href="change_password.php" class="button button-home">Passwort ändern</a>
     <div><a href="logout.php" class="button button-logout">Logout</a></div>
 </header>
 

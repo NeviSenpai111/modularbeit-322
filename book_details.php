@@ -36,7 +36,7 @@ $conn->close();
 // Buchdetails anzeigen mit Buttons für Admin
 if ($book): ?>
     <div class="box-details">
-        <img src="/bilder/book.png" alt="Image of <?php echo htmlspecialchars($book['Title']); ?>">
+        <img src="bilder/book.png" alt="Image of <?php echo htmlspecialchars($book['Title']); ?>">
         <p><strong>Katalog:</strong> <?php echo htmlspecialchars($book['katalog']); ?></p>
         <p><strong>Nummer:</strong> <?php echo htmlspecialchars($book['nummer']); ?></p>
         <p><strong>Title:</strong> <?php echo htmlspecialchars($book['Title']); ?></p>

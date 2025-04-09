@@ -50,7 +50,7 @@ $conn->close();
 <head>
     <title>Edit Book</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="src/styles.css">
     <style>
         .form-container {
             display: flex;
