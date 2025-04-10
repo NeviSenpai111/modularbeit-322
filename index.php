@@ -123,7 +123,7 @@ $start = max(1, $end - $range + 1);
         <?php endif; ?>
     </div>
 </div>
-<!-- Java Script für Buchdetails -->
+<!-- Java Script für Buchdetails --> 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const bookList = document.getElementById('book-list');
