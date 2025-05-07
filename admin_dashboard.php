@@ -65,7 +65,17 @@ if ($conn->connect_error) {
             <label>Kunde Seit: <input type="date" name="kunde_seit" required></label>
             <button type="submit" class="button button-add">Add Kunde</button>
         </form>
-    </div>
+        </div>
+        <div class="form-container">
+            <h2>Add new Admin</h2>
+                <form method="post" action="add_admin.php">
+                    <label>Name: <input type="text" name="name" required></label>
+                    <label>Benutzername: <input type="text" name="benutzername" required></label>
+                    <label>Email: <input type="email" name="email" required></label>
+                    <label>Passwort: <input type="password" name="password" required></label>
+                    <button type="submit" class="button button-add">Add Admin</button>
+                </form>
+        </div>
 </div>
 
 <footer>
