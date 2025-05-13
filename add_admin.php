@@ -1,20 +1,19 @@
 <?php
+// Session starten
 session_start();
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit();
 }
 
-// Database connection parameters
+// Datenbankverbindung
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "books";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -29,18 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Passwort hashen
     $hashedPasswort = password_hash($passwort, PASSWORD_DEFAULT);
 
-    // Prepare and bind
+    // Prepared Statement
     $stmt = $conn->prepare("INSERT INTO books.benutzer (name, benutzername, email, passwort, admin) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssi", $name, $benutzername, $email, $hashedPasswort, $admin);
 
-    // Execute the statement
     if ($stmt->execute()) {
         echo "New Admin added successfully";
     } else {
         echo "Error: " . $stmt->error;
     }
 
-    // Close the statement
+    // Abschluss
     $stmt->close();
     header("Location: admin_dashboard.php");
     exit();

@@ -1,11 +1,13 @@
 <?php
-session_start();
+session_start(); // Session starten
 
+// Überprüfen, ob der Benutzer angemeldet ist
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit();
 }
 
+// Verbindung zur Datenbank herstellen
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,6 +17,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Formular zur Eingabe der Kundendaten
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $vorname = $_POST['vorname'];
     $name = $_POST['name'];

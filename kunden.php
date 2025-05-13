@@ -1,25 +1,24 @@
 <?php
 session_start();
 
-// Database connection parameters
+// Datenbankerbindung
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "books";
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get search term and criteria from the form
+// Suchparameter und Kriterien ermitteln
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $searchCriteria = isset($_GET['criteria']) ? $_GET['criteria'] : 'name';
 
-// Get current page number from the form
+// Aktuelle nummer der Seite
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 30;
 $offset = ($page - 1) * $limit;
@@ -76,7 +75,7 @@ $start = max(1, $end - $range + 1);
     <?php
     $result = $conn->query("SELECT * FROM books.kunden WHERE $searchCriteria LIKE '%$searchTerm%' LIMIT $limit OFFSET $offset");
     if ($result->num_rows > 0) {
-        // Output data of each row
+        // Daten ausgeben
         while($row = $result->fetch_assoc()) {
             echo "<div class='box' data-id='" . $row["kid"] . "'>";
             echo "<p><strong>Name:</strong> " . htmlspecialchars($row["vorname"]) . "</p>";
@@ -87,7 +86,7 @@ $start = max(1, $end - $range + 1);
         echo "0 results";
     }
 
-    // Close connection
+    // Verbindung schließen
     ?>
 </div>
 <div class="container">

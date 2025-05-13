@@ -1,25 +1,23 @@
 <?php
 session_start();
 
-// Database connection parameters
+// Datenbankverbindung
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "books";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get Kunden ID from URL
 $kundenId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 if ($kundenId > 0) {
-    // Fetch Kunden details
+    // Kunden Details abrufen
     $stmt = $conn->prepare("SELECT * FROM books.kunden WHERE kid = ?");
     $stmt->bind_param("i", $kundenId);
     $stmt->execute();
@@ -30,7 +28,7 @@ if ($kundenId > 0) {
     die("Invalid Kunden ID.");
 }
 
-// Close connection
+// Verbindung schließen
 $conn->close();
 
 if ($kunden): ?>
