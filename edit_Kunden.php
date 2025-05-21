@@ -51,3 +51,42 @@
     $stmt->close();
     $conn->close();
     ?>
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Kunde bearbeiten</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+<header>
+<h1>Kunde bearbeiten</h1>
+</header>
+<div class="container">
+    <form method="post">
+        <div class="form-container">
+            <label>Vorname:
+                <input type="text" name="vorname" value="<?php echo htmlspecialchars($kunden['vorname']); ?>" required>
+            </label>
+            <label>Name:
+                <input type="text" name="name" value="<?php echo htmlspecialchars($kunden['name']); ?>" required>
+            </label>
+            <label>Email:
+                <input type="email" name="email" value="<?php echo htmlspecialchars($kunden['email']); ?>" required>
+            </label>
+            <label>Geburtstag:
+                <input type="date" name="geburtstag" value="<?php echo htmlspecialchars($kunden['geburtstag']); ?>" required>
+            </label>
+            <label>Geschlecht:
+                <input type="text" name="geschlecht" value="<?php echo htmlspecialchars($kunden['geschlecht']); ?>" required>
+            </label>
+            <label>Kunde seit:
+                <input type="date" name="kunde_seit" value="<?php echo htmlspecialchars($kunden['kunde_seit']); ?>" required>
+            </label>
+            <button type="submit">Speichern</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

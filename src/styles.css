@@ -1,6 +1,6 @@
 /* Allgemeine Stile */
     /* Container für die Buchliste */
-    . {
+    .container {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
@@ -266,7 +266,7 @@
 
  
        /* Login-Container-Styling */
-   .login- {
+   .login-container {
        display: flex;
        flex-direction: column;
        justify-content: center;
@@ -284,14 +284,14 @@
 
  
        /* Überschrift im Login-Container */
-   .login- h2 {
+   .login-container h2 {
        margin-bottom: 20px;
    }
  
 
  
        /* Formular im Login-Container */
-   .login- form {
+   .login-container form {
        display: flex;
        flex-direction: column;
        gap: 10px;
@@ -300,14 +300,14 @@
 
  
        /* Label im Login-Container */
-   .login- label {
+   .login-container label {
        margin-bottom: 5px;
    }
  
 
  
        /* Eingabefelder im Login-Container */
-   .login- input {
+   .login-container input {
        padding: 10px;
        border-radius: 5px;
        border: 1px solid #333;
@@ -316,7 +316,7 @@
 
  
        /* Button im Login-Container */
-   .login- button {
+   .login-container button {
        padding: 10px;
        border-radius: 5px;
        border: none;
@@ -326,7 +326,7 @@
        transition: background-color 0.3s;
    }
 
-.login- button:hover {
+.login-container button:hover {
     background-color: #555;
 }
  
@@ -341,7 +341,7 @@
 
  
        /* Formular-Container */
-   .form- {
+   .form-container {
        display: flex;
        flex-direction: column;
        justify-content: space-between;
@@ -356,14 +356,14 @@
 
  
        /* Überschrift im Formular-Container */
-   .form- h2 {
+   .form-container h2 {
        margin-bottom: 20px;
    }
  
 
  
        /* Formular im Formular-Container */
-   .form- form {
+   .form-container form {
        display: flex;
        flex-direction: column;
        gap: 10px;
@@ -372,7 +372,7 @@
 
  
        /* Label im Formular-Container */
-   .form- label {
+   .form-container label {
        display: flex;
        flex-direction: column;
        margin-bottom: 5px;
@@ -381,7 +381,7 @@
 
  
        /* Eingabefelder im Formular-Container */
-   .form- input {
+   .form-container input {
        padding: 10px;
        border-radius: 5px;
        border: 1px solid #333;
@@ -390,7 +390,7 @@
 
  
        /* Button im Formular-Container */
-   .form- button {
+   .form-container button {
        padding: 10px;
        border-radius: 5px;
        border: none;
@@ -400,7 +400,7 @@
        transition: background-color 0.3s;
    }
 
-.form- button:hover {
+.form-container button:hover {
     background-color: #555;
 }
  
